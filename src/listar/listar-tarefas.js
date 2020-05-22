@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { A } from 'hookrouter'
-import { Table } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import ItensListaTarefas from './itens-lista-tarefas'
+import { A } from 'hookrouter';
+import { Table } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import ItensListaTarefas from './itens-lista-tarefas';
 
 function ListarTaferas() {
 
@@ -15,7 +15,6 @@ function ListarTaferas() {
          const tarefasDb = localStorage['tarefas'];
          let ListarTaferas = tarefasDb ? JSON.parse(tarefasDb) : [];
          setTarefas(ListarTaferas);
-         console.table(ListarTaferas);
       }
 
       if (carregarTarefas) {
@@ -45,9 +44,9 @@ function ListarTaferas() {
                </tr>
             </thead>
             <tbody>
-               <ItensListaTarefas 
-               tarefas={tarefas} 
-               recarregarTarefas={setCarregarTarefas}
+               <ItensListaTarefas
+                  tarefas={tarefas}
+                  recarregarTarefas={setCarregarTarefas}
                />
             </tbody>
          </Table>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
@@ -39,7 +39,7 @@ function ConcluirTarefa(props) {
         <React.Fragment>
             <span className={props.className}>
                 <Button className="btn-sm mr-1" onClick={handleAbrirModal}
-                    data-testid="btn-abrir-modal">
+                    data-testid="btn-abrir-modal" title="Concluir tarefa">
                     <FontAwesomeIcon icon={faClipboard} />
                 </Button>
             </span>
@@ -71,10 +71,10 @@ function ConcluirTarefa(props) {
 
 }
 
-ConcluirTarefa.prototype = {
-    tarefa: ProTypes.object.isRequired,
-    recarregarTarefas: ProTypes.func.isRequired,
-    className: ProTypes.string
+ConcluirTarefa.propTypes = {
+    tarefa: PropTypes.object.isRequired,
+    recarregarTarefas: PropTypes.func.isRequired,
+    className: PropTypes.string
 }
 
 export default ConcluirTarefa;

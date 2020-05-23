@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 ReactDOM.render(
-  <Container>
+  <Container className="mt-5">
     <GerenciadorTarefas />
   </Container>,
   document.getElementById('root')

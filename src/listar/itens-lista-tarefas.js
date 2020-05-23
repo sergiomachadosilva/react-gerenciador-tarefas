@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { A } from 'hookrouter';
 import ConcluirTarefa from './concluir-tarefa';
+import RemoverTarefa from './remover-tarefa';
 
 
 function ItensListaTarefas(props) {
@@ -13,9 +14,10 @@ function ItensListaTarefas(props) {
     }
 
     return (
-        props.tarefas.map(tarefa =>
+        props.tarefas.map((tarefa, index) =>
             <tr key={tarefa.id}
                 data-testid="tarefa">
+                    <td>{index + 1}</td>
                 <td data-testid="nome-tarefa" style={{ textDecoration: marcarConcluida(tarefa) }}>
                     {tarefa.nome}
                 </td>
@@ -25,14 +27,15 @@ function ItensListaTarefas(props) {
                         tarefa={tarefa}
                         recarregarTarefas={props.recarregarTarefas}
                         className={tarefa.concluida ? 'd-none' : null} >
-
                     </ConcluirTarefa>
+                 
                     <A href={"/atualizar/" + tarefa.id}
-                        className={tarefa.concluida ? 'd-none' : 'btn btn-warning btn-sm'} >
-                        <FontAwesomeIcon icon={faEdit} />
+                        className={tarefa.concluida ? 'd-none' : 'btn btn-warning btn-sm mr-1 text-white'} >
+                        <FontAwesomeIcon icon={faEdit} title="Atualizar" />
                     </A>
-                </td>
 
+                    <RemoverTarefa tarefa={tarefa} recarregarTarefas={props.recarregarTarefas} />
+                </td>
             </tr>
         )
     )

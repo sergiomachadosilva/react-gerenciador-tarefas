@@ -5,7 +5,7 @@ import Tarefa from '../models/tarefa.model';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Renderiza o componente de esxcluir uma tarefa', () => {
+describe('Renderiza o componente de concluir uma tarefa', () => {
 
     const nomeTarefa = 'Tarefa de teste';
     const tarefa = new Tarefa(1, nomeTarefa, false)
@@ -13,7 +13,7 @@ describe('Renderiza o componente de esxcluir uma tarefa', () => {
     it('Deve renderizar o componente sem erros', () => {
         const div = document.createElement('div');
         ReactDOM.render(
-            <ConcluirTarefa tarefa={[tarefa]} />,
+            <ConcluirTarefa tarefa={tarefa} recarregarTarefas={() => false} />,
             div
         );
         ReactDOM.unmountComponentAtNode(div);

@@ -41,7 +41,7 @@ function RemoverTarefa(props) {
             <Button variant="danger"
                 className="btn-sm"
                 onClick={handleAbrirModal}
-                data-testid="btn-abrir-modal" title="Remover">
+                data-testid="btn-abrir-modal" title="Remover tarefa">
                 <FontAwesomeIcon icon={faTrashAlt} />
             </Button>
 

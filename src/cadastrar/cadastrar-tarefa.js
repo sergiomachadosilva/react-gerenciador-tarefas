@@ -44,7 +44,7 @@ function CadastrarTarefa() {
 
     return (
         <React.Fragment>
-            <h3 className="text-center">Cadastrar</h3>
+            <h2 className="text-center mb-5">Cadastrar</h2>
             <Jumbotron>
                 <Form validated={formValidado} noValidate onSubmit={cadastrar}>
                     <Form.Group className="text-right">
@@ -61,8 +61,8 @@ function CadastrarTarefa() {
                             maxLength="100"
                             required
                             value={tarefa}
-                            onChange={handleTxtTarefa} 
-                            data-testid="txt-tarefa"/>
+                            onChange={handleTxtTarefa}
+                            data-testid="txt-tarefa" />
                         <Form.Control.Feedback type="invalid">
                             A tarefa deve conter ao menos 5 caracteres
                         </Form.Control.Feedback>

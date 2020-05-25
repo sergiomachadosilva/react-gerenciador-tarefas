@@ -17,7 +17,7 @@ function ItensListaTarefas(props) {
         props.tarefas.map((tarefa, index) =>
             <tr key={tarefa.id}
                 data-testid="tarefa">
-                    <td>{index + 1}</td>
+                    <td>{tarefa.id}</td>
                 <td data-testid="nome-tarefa" style={{ textDecoration: marcarConcluida(tarefa) }}>
                     {tarefa.nome}
                 </td>
@@ -31,7 +31,7 @@ function ItensListaTarefas(props) {
                  
                     <A href={"/atualizar/" + tarefa.id}
                         className={tarefa.concluida ? 'd-none' : 'btn btn-warning btn-sm mr-1 text-white'} >
-                        <FontAwesomeIcon icon={faEdit} title="Atualizar" />
+                        <FontAwesomeIcon icon={faEdit} title="Atualizar tarefa" />
                     </A>
 
                     <RemoverTarefa tarefa={tarefa} recarregarTarefas={props.recarregarTarefas} />

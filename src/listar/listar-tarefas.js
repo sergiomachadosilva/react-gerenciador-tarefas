@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { A } from 'hookrouter';
-import { Table, Card } from 'react-bootstrap';
+import { Table, Card, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItensListaTarefas from './itens-lista-tarefas';
@@ -17,12 +17,18 @@ function ListarTaferas() {
    const [paginaAtual, setPaginaAtual] = useState(1);
    const [ordenarAsc, setOrdenarAsc] = useState(false);
    const [ordenarDesc, setOrdenarDesc] = useState(false);
+   const [filtroTarefa, setFiltroTarefa] = useState('');
 
 
    useEffect(() => {
       function obterTarefas() {
          const tarefasDb = localStorage['tarefas'];
          let listaTaferas = tarefasDb ? JSON.parse(tarefasDb) : [];
+
+         // Filtrar
+         listaTaferas = listaTaferas.filter(
+            t => t.nome.toLowerCase().indexOf(filtroTarefa.toLowerCase()) >= 0
+         );
 
          //Ordena a lista de tarefas pelo ID
          // ListaTaferas.sort(function (a, b) {
@@ -52,7 +58,7 @@ function ListarTaferas() {
          setCarregarTarefas(false);
       }
 
-   }, [carregarTarefas, paginaAtual, ordenarAsc, ordenarDesc])
+   }, [carregarTarefas, paginaAtual, ordenarAsc, ordenarDesc, filtroTarefa])
 
    function handleMudarPagina(pagina) {
       setPaginaAtual(pagina)
@@ -72,6 +78,11 @@ function ListarTaferas() {
          setOrdenarDesc(false);
       }
       setCarregarTarefas(true)
+   }
+
+   function handleFiltrar(event) {
+      setFiltroTarefa(event.target.value);
+      setCarregarTarefas(true);
    }
 
 
@@ -97,6 +108,18 @@ function ListarTaferas() {
                      </A>
                   </th>
                </tr>
+               <tr>
+                  <th>&nbsp;</th>
+                  <th><Form.Control
+                     type="text"
+                     value={filtroTarefa}
+                     onChange={handleFiltrar}
+                     data-testid="txt-tarefa"
+                     placeholder="Pesquisar"
+                  />
+                  </th>
+                  <th>&nbsp;</th>
+               </tr>
             </thead>
             <tbody>
                <ItensListaTarefas
@@ -116,7 +139,7 @@ function ListarTaferas() {
          </div>
 
 
-         <Card bg="light" text="dark" className={tarefas.length === 0 ? null : 'd-none'}>
+         <Card bg="light" text="dark" className={localStorage['tarefas'].length > 2 ? 'd-none' : null}>
             <Card.Body>
                <Card.Title className="mb-0 text-center">Você não possui tarefas cadastradas :(</Card.Title>
             </Card.Body>

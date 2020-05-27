@@ -117,7 +117,7 @@ function AtualizarTarefa(props) {
 }
 
 AtualizarTarefa.propTypes = {
-    id: PropTypes.number.isRequired
+    id: PropTypes.string.isRequired
 }
 
 export default AtualizarTarefa;

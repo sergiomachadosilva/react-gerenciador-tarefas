@@ -139,12 +139,6 @@ function ListarTaferas() {
             />
          </div>
 
-
-         <Card bg="light" text="dark" className={localStorage['tarefas'].length > 2 ? 'd-none' : null}>
-            <Card.Body>
-               <Card.Title className="mb-0 text-center">Você não possui tarefas cadastradas :(</Card.Title>
-            </Card.Body>
-         </Card>
       </React.Fragment>
    )
 }

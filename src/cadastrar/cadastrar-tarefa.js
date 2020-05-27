@@ -44,7 +44,7 @@ function CadastrarTarefa() {
 
     return (
         <React.Fragment>
-            <h2 className="text-center mb-5">Cadastrar</h2>
+            <h2 className="text-center mb-5">Cadastrar nova tarefa</h2>
             <Jumbotron>
                 <Form validated={formValidado} noValidate onSubmit={cadastrar}>
                     <Form.Group className="text-right">

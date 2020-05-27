@@ -25,21 +25,22 @@ function ListarTaferas() {
          const tarefasDb = localStorage['tarefas'];
          let listaTaferas = tarefasDb ? JSON.parse(tarefasDb) : [];
 
+         //Ordena a lista de tarefas pelo ID
+         listaTaferas.sort(function (a, b) {
+            if (a.id < b.id) {
+               return 1;
+            }
+            if (a.id > b.id) {
+               return -1;
+            }
+            return 0;
+         });
+
+
          // Filtrar
          listaTaferas = listaTaferas.filter(
             t => t.nome.toLowerCase().indexOf(filtroTarefa.toLowerCase()) >= 0
          );
-
-         //Ordena a lista de tarefas pelo ID
-         // ListaTaferas.sort(function (a, b) {
-         //    if (a.id < b.id) {
-         //       return 1;
-         //    }
-         //    if (a.id > b.id) {
-         //       return -1;
-         //    }
-         //    return 0;
-         // });
 
          //ordernar
          if (ordenarAsc) {

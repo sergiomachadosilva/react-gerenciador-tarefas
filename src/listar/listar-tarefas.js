@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { A } from 'hookrouter';
-import { Table, Card, Form } from 'react-bootstrap';
+import { Table, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItensListaTarefas from './itens-lista-tarefas';
